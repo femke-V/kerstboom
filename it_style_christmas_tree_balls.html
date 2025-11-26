@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Style Christmas Tree with Christmas Balls</title>
+<style>
+    body {
+        background-color: #0d1117;
+        color: #c9d1d9;
+        font-family: 'Courier New', monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .tree-container {
+        position: relative;
+        width: 300px;
+        height: 450px;
+    }
+    .tree-shape {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-left: 150px solid transparent;
+        border-right: 150px solid transparent;
+        border-bottom: 450px solid #2ea043;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    .star {
+        position: absolute;
+        top: -40px;
+        left: 125px;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid #fbbf24;
+        transform: rotate(35deg);
+    }
+    .ball {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle at 10px 10px, #f78166, #a04000);
+        border-radius: 50%;
+        box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 10px #f78166;
+    }
+    .light {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: #58a6ff;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #58a6ff;
+        animation: blink 1s infinite alternate;
+    }
+    @keyframes blink {
+        from { opacity: 1; }
+        to { opacity: 0.3; }
+    }
+</style>
+</head>
+<body>
+<div class="tree-container" id="tree">
+    <div class="tree-shape"></div>
+    <div class="star"></div>
+</div>
+<script>
+    const tree = document.getElementById('tree');
+
+    // Add Christmas balls
+    for (let i = 0; i < 10; i++) {
+        const ball = document.createElement('div');
+        ball.className = 'ball';
+        ball.style.top = `${Math.random() * 350}px`;
+        ball.style.left = `${Math.random() * 220 + 40}px`;
+        tree.appendChild(ball);
+    }
+
+    // Add blinking lights
+    for (let i = 0; i < 15; i++) {
+        const light = document.createElement('div');
+        light.className = 'light';
+        light.style.top = `${Math.random() * 350}px`;
+        light.style.left = `${Math.random() * 220 + 40}px`;
+        tree.appendChild(light);
+    }
+</script>
+</body>
+</html>
